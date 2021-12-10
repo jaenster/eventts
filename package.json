@@ -1,5 +1,5 @@
 {
-  "name": "eventts",
+  "name": "@jaenster/events",
   "version": "0.9.3",
   "description": "EventTS - A nodejs like event system that is fully typed",
   "main": "bin/index.js",

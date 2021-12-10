@@ -1,7 +1,7 @@
 # EventTS
 
 ```typescript
-import {EventTS} from "eventts";
+import {EventTS} from "@jaenster/events-ts";
 
 interface Foo {
     on<S = this>(event: "bar", cb: (this: S, a: string) => any);
