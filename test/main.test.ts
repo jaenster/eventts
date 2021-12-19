@@ -1,11 +1,14 @@
 import {EventTS} from "../src";
 
 
+const delay = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
 describe('test', function () {
 
     [() => {
         const testEvents = {} as any as EventTS;
         testEvents.emit = EventTS.prototype.emit;
+        testEvents.emitAsync = EventTS.prototype.emitAsync;
         testEvents.on = EventTS.prototype.on;
         testEvents.once = EventTS.prototype.once;
         testEvents.off = EventTS.prototype.off;
@@ -131,6 +134,42 @@ describe('test', function () {
                     }
 
                 }
+            });
+
+
+            test('on and emit async and once and off', async function () {
+
+                let testData;
+
+                testEvents.on('test', async function (data) {
+                    testData = data;
+                    await delay(100);
+                    testData.data2 = testData.data1;
+                    testData.data4 = testData.data3;
+                });
+
+                testEvents.on('test', async function (data) {
+                    testData = data;
+                    await delay(50);
+                    testData.data1 = 'string1';
+                });
+
+                testEvents.on('test', async function (data) {
+                    testData = data;
+                    await delay(150);
+                    testData.data3 = 'string3';
+                });
+
+                await testEvents.emitAsync('test', {});
+
+                expect(testData.data1).toBe('string1')
+                // key 2 gets copied from the other event. They are in sync as one is delayed 50 ms, other 100 ms
+                expect(testData.data2).toBe('string1')
+
+                expect(testData.data3).toBe('string3')
+
+                // Its not set on time, as 100 ms event is ran before the 150 ms event
+                expect(testData.data4).not.toBe('string3')
             });
         });
     })
