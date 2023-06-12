@@ -1904,10 +1904,10 @@ makeerror@1.0.12:
   dependencies:
     tmpl "1.0.5"
 
-map-ext@^0.1.3:
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/map-ext/-/map-ext-0.1.3.tgz#2e953b910bfb03a4107909c1d09ca3c401e222c6"
-  integrity sha512-VcD2gvgjbWWkeFqP3CCbqlqFy8SIbtbM65ku53x45rPyh/syUFIx6hqsxPMO1PDXtf19CaHlEhO3zuA58oWaeQ==
+map-ext@^0.1.5:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/map-ext/-/map-ext-0.1.5.tgz#4b3af905b6f54ae6825f5edc7f33b371b6a14121"
+  integrity sha512-r+8TK+urd7rx2Yu/329Fzfo4BjnJVR5Mn+xe1WVMHLwPvlJo8p1MPHTEYyBu13HwrKcG+kJs1ufqYdn0eXJh/w==
 
 merge-stream@^2.0.0:
   version "2.0.0"
